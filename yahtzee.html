@@ -1,0 +1,189 @@
+<!--    Name: Febian Reyes Torres	
+	  Course: 235.01
+	HomeWork: #2
+	 Git-Hub: https://github.com/yourName/yourHomeWork
+-->	
+
+<html>
+
+<head>
+	<link rel="stylesheet" href="yahtzee.css">
+	<title> Yahtzee </title>
+	<h1> Yahtzee </h1>
+</head>
+
+<body>
+
+<script language="JavaScript">
+<!--
+	
+	var v = new Array(0,0,0,0,0);
+	var s = new Array(0,0,0,0,0,0,0,0,0);
+	var z = new Array(0,0,0,0,0,0,0,0,0);
+	var rollCount = 0;
+	
+	function roll()
+	{
+		if (rollCount < 3)
+		{
+			for (var i=0; i<5; i++)
+			{
+				var d = document.getElementById("d"+i);
+				if (d.src.charAt(d.src.length-6)=="e") 
+				{
+				v[i] = Math.floor(6*Math.random()) +1;
+				d.src = "pix/dice"+v[i]+".gif";
+				}
+			}
+		}
+		rollCount=rollCount+1;
+	}
+	
+	function diceClick(id)
+	{
+		var t= document.getElementById(id)
+		var n= t.src.charAt(t.src.length-5);
+		t.src= "pix/diceX"+n+".gif";
+	}
+	
+	function scoreClick(id)
+	{	
+		if      (id=="3of") {z[6]=1;}
+		else if (id=="4of") {z[7]=1;}
+		else if (id=="Yahtzee") {z[8]=1;}
+		else {z[id]=1;}
+		scoreTotal();
+	}
+	
+	function score(id)
+	{	
+		if (z[id]==0)
+		{
+			var count=0;
+			t= document.getElementById(id);
+			
+			for (var i=0; i<5; i++)
+			{
+				if (v[i]==id) {count++;}
+			}
+			s[id]=id*count;
+			t.innerHTML = id*count;
+		}
+	}
+	
+	function scoreAll(id)
+	{
+		var count=0;
+		var total=0;
+		var t= document.getElementById(id);
+		
+		for (var num=1; num<=6; num++)
+		{
+			for (var i=0; i<5; i++)
+			{
+				if (v[i]==num) {count++;}
+			}
+			if (count==3 || count==4 || count==5) 
+			{	
+				for (var i=0; i<5; i++)
+				{
+					total= total+v[i];
+				}
+				if (count==3 && id=="3of") 
+				{
+					s[6]= total;
+					t.innerHTML = total;
+				}
+				else if (count==4 && id=="4of") 
+				{
+					s[7]=total;
+					t.innerHTML = total;
+				}
+				else if (count==5 && id=="Yahtzee") 
+				{
+					s[8]=total;
+					t.innerHTML = total;
+				}
+				else {t.innerHTML = 0;}
+			}
+			else {t.innerHTML = 0;}
+			count=0;
+			total=0;
+		}
+	}
+	
+	function scoreTotal()
+	{
+		var t= document.getElementById("Total");
+		var count= 0;
+		for (var i=0; i<9; i++) 
+		{
+			if (z[i]==1)
+			{
+				count=count+s[i];
+			}
+		}
+		t.innerHTML= count;
+		count=0;
+	}
+	
+	function clear(id)
+	{
+		alert(1);
+		t= document.getElementById(id);
+		t.innerHTML= 77;
+		
+	}
+
+//-->
+</script>
+
+<div class="dices">
+
+	<img class="img" id="d0" src="pix/dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d1" src="pix/dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d2" src="pix/dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d3" src="pix/dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d4" src="pix/dice0.gif" onClick="diceClick(this.id)">
+
+</div>
+
+<table class="table">
+	<tr> <td class="a"> 1's </td> 
+		 <td class="b" id="1" onMouseOver="score(this.id)" onMouseOut="clear(this.id)" onClick="scoreClick(this.id)"> </td> 
+	</tr>
+	<tr> <td class="a"> 2's </td> 
+		 <td class="b" id="2" onMouseOver="score(this.id)" onMouseOut="clear(this.id)" onClick="scoreClick(this.id)"> </td> 
+		 <td class="c" rowspan="2"><button onClick="roll()" class="roll"> Roll </button></td>
+	</tr>
+	<tr> <td class="a"> 3's </td> 
+		 <td class="b" id="3" onMouseOver="score(this.id)" onMouseOut="clear(this.id)" onClick="scoreClick(this.id)"> </td> 
+	</tr>
+	<tr> <td class="a"> 4's </td> 
+		 <td class="b" id="4" onMouseOver="score(this.id)" onMouseOut="clear(this.id)" onClick="scoreClick(this.id)"> </td> 
+	</tr>
+	<tr> <td class="a"> 5's </td> 
+		 <td class="b" id="5" onMouseOver="score(this.id)" onMouseOut="clear(this.id)"onClick="scoreClick(this.id)"> </td> 
+	</tr>
+	<tr> <td class="a"> 6's </td> 
+		 <td class="b" id="6" onMouseOver="score(this.id)" onMouseOut="clear(this.id)"onClick="scoreClick(this.id)"> </td> 
+	</tr>
+	<tr> <td class="a"> 3 of a kind </td> 
+		 <td class="b" id="3of" onMouseOver="scoreAll(this.id)" onMouseOut="clear(this.id)" onClick="scoreClick(this.id)"> </td> 
+	</tr>
+	<tr> <td class="a"> 4 of a kind </td> 
+		 <td class="b" id="4of" onMouseOver="scoreAll(this.id)" onMouseOut="clear(this.id)" onClick="scoreClick(this.id)"> </td> 
+		 <td class="c" rowspan="2"><button onClick="window.location.reload();" class="newGame"> New Game </button></td>
+	</tr>
+	<tr> <td class="a"> Yahtzee </td> 
+		 <td class="b" id="Yahtzee" onMouseOver="scoreAll(this.id)" onMouseOut="clear(this.id)" onClick="scoreClick(this.id)"> </td> 
+	</tr>
+	<tr> <td class="a"> Total </td> 
+		 <td class="b" id="Total"> </td> 
+	</tr>
+	
+	
+</table>
+
+</body>
+</html>

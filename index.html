@@ -32,7 +32,7 @@
 				if (d.src.charAt(d.src.length-6)=="e") 
 				{
 				v[i] = Math.floor(6*Math.random()) +1;
-				d.src = "pix/dice"+v[i]+".gif";
+				d.src = "dice"+v[i]+".gif";
 				}
 			}
 		}
@@ -43,7 +43,7 @@
 	{
 		var t= document.getElementById(id)
 		var n= t.src.charAt(t.src.length-5);
-		t.src= "pix/diceX"+n+".gif";
+		t.src= "diceX"+n+".gif";
 	}
 	
 	function scoreClick(id)
@@ -140,11 +140,11 @@
 
 <div class="dices">
 
-	<img class="img" id="d0" src="pix/dice0.gif" onClick="diceClick(this.id)">
-	<img class="img" id="d1" src="pix/dice0.gif" onClick="diceClick(this.id)">
-	<img class="img" id="d2" src="pix/dice0.gif" onClick="diceClick(this.id)">
-	<img class="img" id="d3" src="pix/dice0.gif" onClick="diceClick(this.id)">
-	<img class="img" id="d4" src="pix/dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d0" src="dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d1" src="dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d2" src="dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d3" src="dice0.gif" onClick="diceClick(this.id)">
+	<img class="img" id="d4" src="dice0.gif" onClick="diceClick(this.id)">
 
 </div>
 
